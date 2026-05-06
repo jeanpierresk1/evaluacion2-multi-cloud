@@ -11,15 +11,11 @@ services:
     networks:
       - simi-net
     restart: always
-
-  frontend-erp:
-    build: ./frontend
-    container_name: node_simi
-    ports:
-      - "80:80"
-    networks:
-      - simi-net
-    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d simi_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 networks:
   simi-net:
