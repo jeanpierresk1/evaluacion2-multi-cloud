@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # SERVICIO WEB (Correrá en la instancia SIMI-WEB)
   frontend-erp:
-    build: .
+    build: ./frontend
     container_name: node_simi
     ports:
       - "80:80"
