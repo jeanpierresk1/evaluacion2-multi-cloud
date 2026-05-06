@@ -12,10 +12,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Conexión a la instancia SIMI-BD usando tu IP Privada
 const pool = new Pool({
-    user: 'admin',
-    host: '172.31.33.1', // ¡Aquí está tu IP conectando la VPC!
-    database: 'simi_db',
-    password: 'admin',
+    user: process.env.DB_USER || 'admin',
+    host: process.env.DB_HOST || '172.31.33.1',
+    database: process.env.DB_NAME || 'simi_db',
+    password: process.env.DB_PASSWORD || 'admin',
     port: 5432,
 });
 
