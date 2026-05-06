@@ -10,12 +10,12 @@ app.use(express.json());
 // Servir la vista web (HTML)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Conexión a la instancia SIMI-BD usando tu IP Privada
+// Conexión a la instancia SIMI-BD (Base de Datos) desde el servidor Web
 const pool = new Pool({
-    user: process.env.DB_USER || 'admin',
-    host: process.env.DB_HOST || '172.31.33.1',
-    database: process.env.DB_NAME || 'simi_db',
-    password: process.env.DB_PASSWORD || 'admin',
+    user: 'admin',
+    host: '10.0.134.201', // Tu nueva IP privada de la instancia BD
+    database: 'simi_db',
+    password: 'admin',
     port: 5432,
 });
 
