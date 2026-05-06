@@ -1,22 +1,16 @@
 version: '3.8'
 
 services:
-  bd-server:
-    build: ./database
-    container_name: postgres_simi
-    ports:
-      - "5432:5432"
-    volumes:
-      - ./database_data:/var/lib/postgresql/data
-    networks:
-      - simi-net
-    restart: always
-
   frontend-erp:
     build: ./frontend
     container_name: node_simi
     ports:
       - "80:80"
+    environment:
+      - DB_HOST=172.31.33.1
+      - DB_USER=admin
+      - DB_PASSWORD=admin
+      - DB_NAME=simi_db
     networks:
       - simi-net
     restart: always
